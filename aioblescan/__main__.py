@@ -21,6 +21,7 @@
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 # WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 # IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+#modified by keith goh
 import sys
 import asyncio
 import argparse
@@ -29,6 +30,15 @@ import aioblescan as aiobs
 from aioblescan.plugins import EddyStone
 from aioblescan.plugins import RuuviWeather
 from aioblescan.plugins import BlueMaestro
+import pexpect
+from multiprocessing import Process
+
+def open_video(video):
+    child = pexpect.spawn('bash')
+    child.expect(r'\$')
+    child.sendline('python3 one.py')
+
+
 
 
 def check_mac(val):
@@ -83,8 +93,11 @@ def my_process(data):
         print("Raw data: {}".format(ev.raw_data))
     if opts.eddy:
         xx=EddyStone().decode(ev)
-        if xx:
-            print("Google Beacon {}".format(xx))
+        if xx['rssi']>-70:
+            close+=1
+            if close==10:
+                openvideo()
+                print("Google Beacon {}".format(xx))
     elif opts.ruuvi:
         xx=RuuviWeather().decode(ev)
         if xx:
