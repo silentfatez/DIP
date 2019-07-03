@@ -4,7 +4,7 @@ All folders contain autoplay code so that it is able to boot up a continuos vide
 use the videos in media folder or change the code to use your own videos.
 
 https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup/all
-use the above link to understand how to autoplay videos
+use the above link to understand how to autoplay videos. For this project we used autostart which is method 2.
 
 Basically pin 1 is the master pin to call the functions in all other pins.
 
