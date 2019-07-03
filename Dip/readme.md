@@ -1,6 +1,6 @@
 the files are to be uploaded to their respective pins.
 for pin 2 and 4 there are seperate python files to play the vids via command line
-All folders contain autoplay code so that it is able to boot up a continuos video on startup.
+All folders contain autoplay code so that it is able to boot up a continuous video on startup.
 use the videos in media folder or change the code to use your own videos.
 
 https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup/all
