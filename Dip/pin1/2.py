@@ -1,0 +1,22 @@
+import pexpect
+import time
+
+child = pexpect.spawn('bash')
+child.expect(r'\$')
+child.sendline('ssh 192.168.43.233')
+child.expect(r'password')
+child.sendline('Dreams97')
+child.expect(r'\$')
+child.sendline('nohup python3 pin2playvid.py')
+time.sleep(1)
+child = pexpect.spawn('bash')
+child.expect(r'\$')
+child.sendline('sudo killall /usr/bin/omxplayer.bin')
+child.expect(r'\$')
+child.sendline('nohup omxplayer rpi12.mp4 --loop --aspect-mode stretch --no-osd')
+time.sleep(11.5)
+child = pexpect.spawn('bash')
+child.expect(r'\$')
+child.sendline('sudo killall /usr/bin/omxplayer.bin')
+child.expect(r'\$')
+child.sendline('nohup omxplayer ruoyao.mp4 --loop --aspect-mode stretch --no-osd')
